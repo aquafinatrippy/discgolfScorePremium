@@ -5,10 +5,11 @@ import Controls from '../components/Controls';
 
 const Home = () => {
   const [players, setPlayers] = useState<Player[]>([]);
+  console.log(players);
 
   return (
     <Box>
-      <Controls addPlayerCallback={() => {}} />
+      <Controls addPlayerCallback={setPlayers} />
     </Box>
   );
 };

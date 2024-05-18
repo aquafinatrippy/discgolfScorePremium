@@ -7,16 +7,28 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
+  TextField,
+  Typography,
 } from '@mui/material';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import { useState } from 'react';
+import { Player } from '../types/player';
 
 type Props = {
-  addPlayerCallback: () => void;
+  addPlayerCallback: Function;
 };
 
-const Controls = ({}: Props) => {
+const Controls = ({ addPlayerCallback }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [name, setName] = useState<string>('');
+
+  const handleAddPlayer = () => {
+    addPlayerCallback((prev: Player[]) => {
+      return [...prev, { name, score: 0 }];
+    });
+    setName('');
+    setOpen(false);
+  };
 
   const handleOpenDialog = () => {
     setOpen(!open);
@@ -33,19 +45,23 @@ const Controls = ({}: Props) => {
         aria-labelledby='alert-dialog-title'
         aria-describedby='alert-dialog-description'
       >
-        <DialogTitle id='alert-dialog-title'>
-          {"Use Google's location service?"}
+        <DialogTitle id='alert-dialog-title' variant='h5'>
+          Lisa mängia
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id='alert-dialog-description'>
-            Let Google help apps determine location. This means sending
-            anonymous location data to Google, even when no apps are running.
-          </DialogContentText>
+          <TextField
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            id='standard-basic'
+            label='nimi'
+            variant='standard'
+            fullWidth
+          />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleOpenDialog}>Disagree</Button>
+          <Button onClick={handleAddPlayer}>LISA</Button>
           <Button onClick={handleOpenDialog} autoFocus>
-            Agree
+            SULGE
           </Button>
         </DialogActions>
       </Dialog>
