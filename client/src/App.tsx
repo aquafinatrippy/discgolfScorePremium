@@ -1,9 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import Home from './views/Home';
 
 function App() {
   return (
     <Box display='flex' justifyContent='center'>
-      <Typography variant='h1'>Yo</Typography>
+      <Home />
     </Box>
   );
 }
