@@ -2,6 +2,7 @@ import { Box, Button, Modal, Typography } from '@mui/material';
 import Home from './views/Home';
 import { useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { Game } from './types';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -17,9 +18,13 @@ const style = {
 
 function App() {
   const [open, setOpen] = useState(true);
-  const handleClose = () => {
+  const [game, setGame] = useState<Game>({ name: '', players: [] });
+
+  const handleCreateGame = () => {
+    setGame({ name: 'demo', players: [] });
     setOpen(false);
   };
+
   return (
     <Box display='flex' justifyContent='center'>
       <Modal
@@ -30,7 +35,12 @@ function App() {
         <Box sx={style} display='flex' flexDirection='column' gap='20px'>
           <Typography variant='h5'>Vali rada või loo enda randa</Typography>
 
-          <Button fullWidth variant='contained' endIcon={<PlayArrowIcon />}>
+          <Button
+            fullWidth
+            variant='contained'
+            endIcon={<PlayArrowIcon />}
+            onClick={handleCreateGame}
+          >
             Alusta ilma rajata
           </Button>
         </Box>

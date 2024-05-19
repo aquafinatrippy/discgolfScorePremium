@@ -3,10 +3,14 @@ import { Player } from '../types/player';
 import { Alert, Box } from '@mui/material';
 import Controls from '../components/Controls';
 import { PlayerCard } from '../components/PlayerCard';
+import { Game } from '../types';
 
-const Home = () => {
+interface HomeProps {
+  game: Game;
+}
+
+const Home = ({ game }: HomeProps) => {
   const [players, setPlayers] = useState<Player[]>([]);
-  console.log(players);
 
   return (
     <Box>
