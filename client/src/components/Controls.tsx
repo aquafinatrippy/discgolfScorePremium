@@ -4,28 +4,24 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   IconButton,
   TextField,
-  Typography,
 } from '@mui/material';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import { useState } from 'react';
-import { Player } from '../types/player';
+import { Player } from '../types';
+import { useDispatch } from 'react-redux';
+import { addPlayer } from '../state/score/gameSlice';
 
-type Props = {
-  addPlayerCallback: Function;
-};
-
-const Controls = ({ addPlayerCallback }: Props) => {
+const Controls = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
 
+  const dispatch = useDispatch();
+
   const handleAddPlayer = () => {
-    addPlayerCallback((prev: Player[]) => {
-      return [...prev, { name, score: 0 }];
-    });
+    dispatch(addPlayer({ name, score: 0 }));
     setName('');
     setOpen(false);
   };

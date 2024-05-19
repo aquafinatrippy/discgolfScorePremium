@@ -6,19 +6,19 @@ import {
   Card,
   Box,
 } from '@mui/material';
-import { Player } from '../types/player';
+import { Player } from '../types';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../state/store';
-import { decrement, increment } from '../state/score/scoreSlice';
+import { useDispatch } from 'react-redux';
+
+import { decreaseScore, increaseScore } from '../state/score/gameSlice';
 
 interface PlayerCardProps {
   player: Player;
+  id: number;
 }
 
-export const PlayerCard = ({ player }: PlayerCardProps) => {
-  const score = useSelector((state: RootState) => state.score.value);
+export const PlayerCard = ({ player, id }: PlayerCardProps) => {
   const dispatch = useDispatch();
 
   return (
@@ -26,7 +26,7 @@ export const PlayerCard = ({ player }: PlayerCardProps) => {
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
           <Typography>{player.name}</Typography>
-          <Typography>{score}</Typography>
+          <Typography>{player.score}</Typography>
         </CardContent>
         <CardActions>
           <Button size='small'>Eemalda mängia</Button>
@@ -34,13 +34,13 @@ export const PlayerCard = ({ player }: PlayerCardProps) => {
       </Card>
       <Box display='flex' flexDirection='column' gap='10px' marginLeft='10px'>
         <Button
-          onClick={() => dispatch(increment())}
+          onClick={() => dispatch(increaseScore(id))}
           sx={{ height: '50%' }}
           variant='contained'
           startIcon={<AddIcon />}
         />
         <Button
-          onClick={() => dispatch(decrement())}
+          onClick={() => dispatch(decreaseScore(id))}
           sx={{ height: '50%' }}
           variant='contained'
           startIcon={<RemoveIcon />}

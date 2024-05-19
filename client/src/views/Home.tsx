@@ -1,20 +1,24 @@
 import { useState } from 'react';
-import { Player } from '../types/player';
+import { Player } from '../types';
 import { Alert, Box } from '@mui/material';
 import Controls from '../components/Controls';
-import { PlayerCard } from '../components/PlayerCard';
 import { Game } from '../types';
+import { useSelector } from 'react-redux';
+import { GameState } from '../state/score/gameSlice';
+import { RootState } from '../state/store';
+import SelectCourse from '../components/SelectCourse';
+import { PlayerCard } from '../components/PlayerCard';
 
-interface HomeProps {
-  game: Game;
-}
-
-const Home = ({ game }: HomeProps) => {
-  const [players, setPlayers] = useState<Player[]>([]);
+const Home = () => {
+  // const [players, setPlayers] = useState<Player[]>([]);
+  const players = useSelector(
+    (state: RootState) => state.gameStore.game.players
+  );
 
   return (
-    <Box>
-      <Controls addPlayerCallback={setPlayers} />
+    <Box display='flex' flexDirection='column' alignItems='center' gap='40px'>
+      <Controls />
+      {players.length && <SelectCourse />}
       <Box>
         {players.length ? (
           <Box display='flex' gap='8px' flexDirection='column'>
@@ -25,6 +29,7 @@ const Home = ({ game }: HomeProps) => {
                   name,
                   score,
                 }}
+                id={index}
               />
             ))}
           </Box>
