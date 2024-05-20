@@ -27,7 +27,7 @@ function App() {
 
   return (
     <Box display='flex' justifyContent='center'>
-      <Modal
+      {/* <Modal
         open={open}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
@@ -44,7 +44,7 @@ function App() {
             Alusta ilma rajata
           </Button>
         </Box>
-      </Modal>
+      </Modal> */}
       <Home />
     </Box>
   );

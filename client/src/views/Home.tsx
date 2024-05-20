@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <Box display='flex' flexDirection='column' alignItems='center' gap='40px'>
       <Controls />
-      {players.length && <SelectCourse />}
+      {players.length !== 0 && <SelectCourse />}
       <Box>
         {players.length ? (
           <Box display='flex' gap='8px' flexDirection='column'>
