@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { Player } from '../types';
 import { Alert, Box } from '@mui/material';
 import Controls from '../components/Controls';
-import { Game } from '../types';
+
 import { useSelector } from 'react-redux';
-import { GameState } from '../state/score/gameSlice';
+
 import { RootState } from '../state/store';
 import SelectCourse from '../components/SelectCourse';
 import { PlayerCard } from '../components/PlayerCard';
