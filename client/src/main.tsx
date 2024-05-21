@@ -8,16 +8,21 @@ import { Login } from './views/Login.tsx';
 import { NotFound } from './views/NotFound.tsx';
 import { Box } from '@mui/material';
 import { Navigation } from './components/Navigation.tsx';
+import { First } from './views/First.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <First />,
     errorElement: <NotFound />,
   },
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/home',
+    element: <App />,
   },
 ]);
 

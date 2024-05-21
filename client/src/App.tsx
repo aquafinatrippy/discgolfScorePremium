@@ -3,6 +3,7 @@ import Home from './views/Home';
 import { useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { Game } from './types';
+import { First } from './views/First';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -44,8 +45,9 @@ function App() {
             Alusta ilma rajata
           </Button>
         </Box>
-      </Modal>
-      <Home /> */}
+      </Modal> */}
+
+      <Home />
     </Box>
   );
 }
