@@ -1,8 +1,8 @@
-import { Box, Button, Modal, Typography } from '@mui/material';
-import Home from './views/Home';
-import { useState } from 'react';
+import { Box, Modal, Typography, Button } from "@mui/material";
+import { useState } from "react";
+import { Game } from "../types";
+import Home from "./Home";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { Game } from './types';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -16,7 +16,7 @@ const style = {
   p: 4,
 };
 
-function App() {
+export const First = () => {
   const [open, setOpen] = useState(true);
   const [game, setGame] = useState<Game>({ name: '', players: [] });
 
@@ -27,7 +27,7 @@ function App() {
 
   return (
     <Box display='flex' justifyContent='center'>
-      {/* <Modal
+      <Modal
         open={open}
         aria-labelledby='modal-modal-title'
         aria-describedby='modal-modal-description'
@@ -45,9 +45,8 @@ function App() {
           </Button>
         </Box>
       </Modal>
-      <Home /> */}
+      <Home />
     </Box>
   );
 }
-
-export default App;
+};
