@@ -5,18 +5,6 @@ import Home from './Home';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { Link, useNavigate } from 'react-router-dom';
 
-// const style = {
-//   position: 'absolute' as 'absolute',
-//   top: '50%',
-//   left: '50%',
-//   transform: 'translate(-50%, -50%)',
-//   width: 400,
-//   bgcolor: 'background.paper',
-
-//   boxShadow: 24,
-//   p: 4,
-// };
-
 const StyledButton = styled(Button)(({ theme }) => ({
   maxWidth: '100%',
   maxHeight: '80px',
