@@ -3,28 +3,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import { Provider } from 'react-redux';
 import { store } from './state/store.ts';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Login } from './views/Login.tsx';
-import { NotFound } from './views/NotFound.tsx';
 import { Box } from '@mui/material';
 import { Navigation } from './components/Navigation.tsx';
-import { First } from './views/First.tsx';
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <First />,
-    errorElement: <NotFound />,
-  },
-  {
-    path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/home',
-    element: <App />,
-  },
-]);
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { First } from './views/TrackSelection.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -36,8 +19,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         height='100vh'
         width='100%'
       >
-        <RouterProvider router={router} />
-        <Navigation />
+        <Router>
+          <Routes>
+            <Route path='/' element={<First />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/home' element={<App />} />
+          </Routes>
+          <Navigation />
+        </Router>
       </Box>
     </Provider>
   </React.StrictMode>
