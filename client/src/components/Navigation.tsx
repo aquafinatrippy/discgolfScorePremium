@@ -20,13 +20,21 @@ export const Navigation = () => {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label='Ajalugu' icon={<RestoreIcon />} />
+        <BottomNavigationAction
+          label='Ajalugu'
+          icon={<RestoreIcon />}
+          onClick={() => navigate('/history')}
+        />
         <BottomNavigationAction
           label='Aktiivne mäng'
           icon={<SportsEsportsIcon />}
           onClick={() => navigate('/home')}
         />
-        <BottomNavigationAction label='Profiil' icon={<Person2Icon />} />
+        <BottomNavigationAction
+          label='Profiil'
+          icon={<Person2Icon />}
+          onClick={() => navigate('/login')}
+        />
       </BottomNavigation>
     </Box>
   );

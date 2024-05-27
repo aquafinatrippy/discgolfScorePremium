@@ -12,6 +12,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 
 export const First = () => {
   const navigate = useNavigate();
+
   return (
     <Box display='flex' justifyContent='center' marginTop='40px'>
       <Box display='flex' flexDirection='column' gap='20px' width='90%'>

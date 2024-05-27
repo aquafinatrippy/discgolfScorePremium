@@ -8,6 +8,7 @@ import { Box } from '@mui/material';
 import { Navigation } from './components/Navigation.tsx';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { First } from './views/TrackSelection.tsx';
+import { History } from './views/History.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <Route path='/' element={<First />} />
             <Route path='/login' element={<Login />} />
             <Route path='/home' element={<App />} />
+            <Route path='/history' element={<History />} />
           </Routes>
           <Navigation />
         </Router>
