@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { User } from "../models/userModel";
 import { Game } from "../models/gameSchema";
 
-export const createFinance = async (req: Request, res: Response) => {
+export const createGame = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.user.id);
     if (!user) {
@@ -26,7 +26,7 @@ export const createFinance = async (req: Request, res: Response) => {
   }
 };
 
-export const getFinanceData = async (req: Request, res: Response) => {
+export const getGameData = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.user.id);
     if (!user) {
@@ -40,7 +40,7 @@ export const getFinanceData = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteFinance = async (req: Request, res: Response) => {
+export const deleteGame = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.user.id);
     if (!user) {
@@ -54,7 +54,7 @@ export const deleteFinance = async (req: Request, res: Response) => {
   }
 };
 
-export const updateFinance = async (req: Request, res: Response) => {
+export const updateGame = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.user.id);
     if (!user) {

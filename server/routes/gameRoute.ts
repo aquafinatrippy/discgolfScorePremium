@@ -1,12 +1,13 @@
 import express from "express";
 import {
-  createFinance,
-  getFinanceData,
+  createGame,
+  deleteGame,
+  getGameData,
 } from "../controllers/gameController";
 import { authCheck } from "../middleware/authMiddleware";
 
 export const gameRoutes = express.Router();
 
-gameRoutes.route("/").get(authCheck, getFinanceData);
-gameRoutes.route("/create").post(authCheck, createFinance);
-gameRoutes.route("/:id").delete(authCheck, )
+gameRoutes.route("/").get(authCheck, getGameData);
+gameRoutes.route("/create").post(authCheck, createGame);
+gameRoutes.route("/:id").delete(authCheck, deleteGame)
