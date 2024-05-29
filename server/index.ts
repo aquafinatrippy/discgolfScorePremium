@@ -1,39 +1,24 @@
-import express,{ Application, Router ,Request, Response} from "express";
-import { userRoutes } from "./routes/userRoute";
-import { ConnectDB } from "./db";
+import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-import morgan from "morgan";
-import swaggerUi from "swagger-ui-express";
-
-
+import { ConnectDB } from "./database";
+import { userRoutes } from "./routes/userRoute";
+import { gameRoutes } from "./routes/gameRoute";
 
 ConnectDB();
 dotenv.config();
 
+const app: Express = express();
+const port = process.env.PORT;
 
-const app: Application = express();
-var router: Router= require('express').Router();
-const port: number = 3000;
-app.use(router);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(express.static("public"));
-
-app.use(
-  "/docs",
-  swaggerUi.serve,
-  swaggerUi.setup(undefined, {
-    swaggerOptions: {
-      url: "/swagger.json",
-    },
-  })
-);
-
 app.use("/api/user", userRoutes);
+app.use("/api/game", gameRoutes);
 
-router.get("/", function (req:Request, res:Response) : void {
-    res.send("<h1>test</h1>");
-  });
+app.get("/", (req: Request, res: Response) => {
+  res.send("Express + TypeScript Server");
+});
+
 app.listen(port, () => {
-    console.log(`Server Running here 👉 http://localhost:${port}`);
-})
+  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+});
