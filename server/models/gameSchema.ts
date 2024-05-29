@@ -1,14 +1,12 @@
 import { Schema, model } from "mongoose";
+import { Player } from "../types/player";
 
 export interface IGame {
   title: string;
-  players: {
-    name: string;
-    score: string
-  }[],
+  players: Player[],
   scoreBoard: {
     basket: number,
-    
+    scoreTable: Player[]
   }[]
 }
 
@@ -20,9 +18,15 @@ const gameSchema = new Schema<IGame>(
     },
     players: [{
       name: { type: String },
-      score: { type: String }
+      score: { type: Number }
     }],
-
+    scoreBoard: [{
+      basket: { type: Number },
+      scoreTable: [{
+        name: { type: String },
+        score: { type: Number }
+      }]
+    }]
   },
   {
     timestamps: true,
