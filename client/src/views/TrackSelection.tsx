@@ -2,14 +2,6 @@ import { Box, Typography, Button, styled } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useNavigate } from 'react-router-dom';
 
-const StyledButton = styled(Button)(({ theme }) => ({
-  maxWidth: '100%',
-  maxHeight: '80px',
-  minWidth: '100%',
-  minHeight: '80px',
-  fontSize: '25px',
-}));
-
 export const First = () => {
   const navigate = useNavigate();
 
@@ -19,28 +11,31 @@ export const First = () => {
         <Typography variant='h4'>Vali või loo rada</Typography>
 
         <Box display='flex' flexDirection='column' gap='30px' marginTop='20px'>
-          <StyledButton
+          <Button
             fullWidth
             variant='contained'
             endIcon={<PlayArrowIcon />}
             onClick={() => navigate('/home')}
+            size='large'
           >
             Alusta ilma rajata
-          </StyledButton>
-          <StyledButton
+          </Button>
+          <Button
             fullWidth
             variant='contained'
+            size='large'
             endIcon={<PlayArrowIcon />}
           >
             Loo rada
-          </StyledButton>
-          <StyledButton
+          </Button>
+          <Button
             fullWidth
             variant='contained'
+            size='large'
             endIcon={<PlayArrowIcon />}
           >
             Vali rada
-          </StyledButton>
+          </Button>
         </Box>
       </Box>
     </Box>

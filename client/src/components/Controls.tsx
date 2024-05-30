@@ -8,6 +8,7 @@ import {
   IconButton,
   TextField,
   Typography,
+  styled,
 } from '@mui/material';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import { useState } from 'react';
@@ -17,6 +18,22 @@ import { addPlayer } from '../state/score/gameSlice';
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
 import RedoIcon from '@mui/icons-material/Redo';
 import UndoIcon from '@mui/icons-material/Undo';
+
+const SmallButton = styled(Button)(({ theme }) => ({
+  maxWidth: '50%',
+  maxHeight: '80px',
+  minWidth: '50%',
+  minHeight: '55px',
+  fontSize: '25px',
+}));
+
+const RegularButton = styled(Button)(({ theme }) => ({
+  maxWidth: '100%',
+  maxHeight: '80px',
+  minWidth: '100%',
+  minHeight: '55px',
+  fontSize: '25px',
+}));
 
 const Controls = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -36,8 +53,12 @@ const Controls = () => {
     setOpen(!open);
   };
 
+  const handleParChange = () => {
+    setPar((prevPar) => (prevPar === 3 ? 4 : 3));
+  };
+
   return (
-    <Box>
+    <Box width='100%'>
       <Box marginBottom='0.5em'>
         <Typography
           display='flex'
@@ -54,16 +75,20 @@ const Controls = () => {
           aria-label='delete'
           endIcon={<GroupAddIcon />}
           variant='contained'
+          size='large'
+          fullWidth
         >
-          Lisa mangia
+          Mangia
         </Button>
         <Button
-          onClick={handleOpenDialog}
+          onClick={handleParChange}
           aria-label='delete'
           endIcon={<ChangeCircleIcon />}
           variant='contained'
+          size='large'
+          fullWidth
         >
-          Muuda korv
+          Par
         </Button>
       </Box>
       <Box>
@@ -81,12 +106,14 @@ const Controls = () => {
         display='flex'
         flexDirection='column'
         gap='0.5em'
+        width='100%'
       >
         <Button
           aria-label='delete'
           endIcon={<RedoIcon />}
           variant='contained'
           fullWidth
+          size='large'
           onClick={() => setBasketNumber(basketNumber + 1)}
         >
           Jargmine korv
@@ -96,6 +123,7 @@ const Controls = () => {
           aria-label='delete'
           endIcon={<UndoIcon />}
           variant='contained'
+          size='large'
           fullWidth
         >
           Eelmine Korv

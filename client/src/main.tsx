@@ -19,6 +19,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         justifyContent='space-between'
         height='100vh'
         width='100%'
+        maxWidth='400px'
+        margin='0 auto'
       >
         <Router>
           <Routes>
