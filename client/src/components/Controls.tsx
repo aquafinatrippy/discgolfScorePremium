@@ -13,33 +13,21 @@ import {
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import { useState } from 'react';
 import { Player } from '../types';
-import { useDispatch } from 'react-redux';
-import { addPlayer } from '../state/score/gameSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPlayer, updateBasket } from '../state/score/gameSlice';
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
 import RedoIcon from '@mui/icons-material/Redo';
 import UndoIcon from '@mui/icons-material/Undo';
-
-const SmallButton = styled(Button)(({ theme }) => ({
-  maxWidth: '50%',
-  maxHeight: '80px',
-  minWidth: '50%',
-  minHeight: '55px',
-  fontSize: '25px',
-}));
-
-const RegularButton = styled(Button)(({ theme }) => ({
-  maxWidth: '100%',
-  maxHeight: '80px',
-  minWidth: '100%',
-  minHeight: '55px',
-  fontSize: '25px',
-}));
+import { RootState } from '../state/store';
 
 const Controls = () => {
+  const basketNumber = useSelector(
+    (state: RootState) => state.gameStore.game.scoreBoard[0].basket
+  );
+
   const [open, setOpen] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
   const [par, setPar] = useState<number>(3);
-  const [basketNumber, setBasketNumber] = useState<number>(1);
 
   const dispatch = useDispatch();
 
@@ -114,12 +102,12 @@ const Controls = () => {
           variant='contained'
           fullWidth
           size='large'
-          onClick={() => setBasketNumber(basketNumber + 1)}
+          onClick={() => dispatch(updateBasket({ type: 'add' }))}
         >
           Jargmine korv
         </Button>
         <Button
-          onClick={() => setBasketNumber(basketNumber - 1)}
+          onClick={() => dispatch(updateBasket({ type: 'remove' }))}
           aria-label='delete'
           endIcon={<UndoIcon />}
           variant='contained'
